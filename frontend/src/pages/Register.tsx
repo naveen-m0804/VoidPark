@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'; // Added signOut
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'; // Added signOut
 import { auth } from '@/config/firebase';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -47,13 +47,25 @@ const Register = () => {
          try {
            const userCred = await createUserWithEmailAndPassword(auth, email, password);
            user = userCred.user;
-         } catch (fbErr: any) {
+          } catch (fbErr: any) {
            if (fbErr.code === 'auth/email-already-in-use') {
-             toast.error('Email already in use. Please log in.');
-             navigate('/login');
-             return;
+             // Handle "Zombie" user: Exists in Firebase, missing in DB.
+             // Try to sign in with the provided password to get the UID.
+             try {
+               const userCred = await signInWithEmailAndPassword(auth, email, password);
+               user = userCred.user;
+               toast.info('Account found. Completing registration...');
+             } catch (loginErr: any) {
+               if (loginErr.code === 'auth/wrong-password') {
+                  toast.error('Email already in use. Please log in.');
+                  navigate('/login');
+                  return;
+               }
+               throw loginErr;
+             }
+           } else {
+             throw fbErr;
            }
-           throw fbErr;
          }
       }
 
@@ -146,7 +158,7 @@ const Register = () => {
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="pl-10 h-12 bg-muted border-border focus:border-primary opacity-80"
+              className="pl-10 h-12 bg-muted border-border focus:border-primary"
               required
             />
           </div>
