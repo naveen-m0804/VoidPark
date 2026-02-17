@@ -26,11 +26,7 @@ const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (firebaseUser?.email) {
-      setEmail(firebaseUser.email);
-    }
-  }, [firebaseUser]);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,7 +123,7 @@ const Register = () => {
              ParkEase
           </h1>
           <p className="text-muted-foreground text-sm">
-            {firebaseUser ? 'Complete your Profile' : 'Create your account'}
+            Create your account
           </p>
         </div>
 
@@ -152,7 +148,6 @@ const Register = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="pl-10 h-12 bg-muted border-border focus:border-primary opacity-80"
               required
-              disabled={!!firebaseUser}
             />
           </div>
 
@@ -175,9 +170,8 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="pl-10 pr-10 h-12 bg-muted border-border focus:border-primary"
-              required={!firebaseUser}
+              required
               minLength={6}
-              disabled={!!firebaseUser}
             />
             <button
               type="button"
@@ -189,11 +183,11 @@ const Register = () => {
           </div>
 
           <Button type="submit" size="lg" className="w-full font-bold text-base" disabled={loading}>
-            {loading ? 'Please wait...' : (firebaseUser ? 'Complete Registration' : 'Sign Up')}
+            {loading ? 'Please wait...' : 'Sign Up'}
           </Button>
         </form>
 
-        {!firebaseUser && (
+
           <>
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
@@ -221,7 +215,7 @@ const Register = () => {
               </Link>
             </p>
           </>
-        )}
+
       </motion.div>
     </div>
   );
