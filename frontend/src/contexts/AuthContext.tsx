@@ -43,8 +43,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setProfile(data.data);
         setIsNewUser(false);
       }
-    } catch (err) {
-      console.error('Profile fetch failed:', err);
+    } catch (err: any) {
+      // 404 is expected for new/unregistered users, don't spam console
+      if (err.response?.status !== 404) {
+        console.error('Profile fetch failed:', err);
+      }
       setProfile(null);
       setIsNewUser(true);
     }
