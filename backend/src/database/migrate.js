@@ -9,10 +9,10 @@ const migrationSQL = `
 -- ================================================
 -- DROP EXISTING TABLES (Clean Slate)
 -- ================================================
-DROP TABLE IF EXISTS bookings CASCADE;
-DROP TABLE IF EXISTS parking_slots CASCADE;
-DROP TABLE IF EXISTS parking_spaces CASCADE;
-DROP TABLE IF EXISTS users CASCADE;
+-- DROP TABLE IF EXISTS bookings CASCADE;
+-- DROP TABLE IF EXISTS parking_slots CASCADE;
+-- DROP TABLE IF EXISTS parking_spaces CASCADE;
+-- DROP TABLE IF EXISTS users CASCADE;
 
 -- ================================================
 -- Enable Extensions
