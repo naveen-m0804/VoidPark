@@ -36,10 +36,12 @@ const authenticate = async (req, res, next) => {
     const decodedToken = await verifyIdToken(token);
 
     // Lookup the local user by firebase_uid
+    console.log(`🔍 Auth: Verifying user ${decodedToken.uid}`);
     const result = await query(
       'SELECT id, firebase_uid, name, phone, email, created_at, updated_at FROM users WHERE firebase_uid = $1',
       [decodedToken.uid]
     );
+    console.log(`✅ Auth Result: Found ${result.rows.length} rows`);
 
     if (result.rows.length === 0) {
       // User is authenticated via Firebase but not yet in our DB.
