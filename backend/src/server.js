@@ -42,20 +42,6 @@ app.get('/health', (req, res) => {
 app.use('/api/v1', routes);
 
 // ── Serve Frontend (Production) ──
-const path = require('path');
-const frontendPath = path.join(__dirname, '../../frontend/dist');
-
-// 1. Serve static assets
-app.use(express.static(frontendPath));
-
-// 2. SPA Fallback (Everything else -> index.html, unless it starts with /api)
-app.get('*', (req, res, next) => {
-  if (req.url.startsWith('/api')) {
-    return next();
-  }
-  res.sendFile(path.join(frontendPath, 'index.html'));
-});
-
 // ── 404 Handler ──
 app.use((req, res) => {
   res.status(404).json({
