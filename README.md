@@ -553,7 +553,8 @@ REACT_APP_API_BASE_URL=http://localhost:5000
 
 
 ### My Bookings — Reservation History
-![Uploading screencapture-park-ease-6sr4-onrender-bookings-2026-02-20-12_27_26.png…]()
+<img width="1920" height="868" alt="screencapture-park-ease-6sr4-onrender-bookings-2026-02-20-12_27_26" src="https://github.com/user-attachments/assets/ebd2d9c7-6689-4747-8064-8289e5d246d5" />
+
 
 ### Profile & Provider Module — Register a Parking Space
 <img width="1920" height="1162" alt="screencapture-park-ease-6sr4-onrender-profile-2026-02-20-12_09_43" src="https://github.com/user-attachments/assets/e2d860ef-81ad-4453-8c41-4b536072285d" />
