@@ -540,24 +540,25 @@ REACT_APP_API_BASE_URL=http://localhost:5000
 ---
 
 ## Screenshots & Output
+### Login Page - Home Page of the website
+<img width="1920" height="1698" alt="screencapture-park-ease-6sr4-onrender-login-2026-02-20-12_01_14" src="https://github.com/user-attachments/assets/3b5355c3-9b6d-4a3e-9669-e4cfa272a4fa" />
+### Registration - New User will register by provoiding the valid Info
+<img width="1920" height="897" alt="screencapture-park-ease-6sr4-onrender-register-2026-02-20-12_02_21" src="https://github.com/user-attachments/assets/7f570b22-19a9-4286-b667-edc9268a9bd2" />
 
 ### Dashboard — Parking Discovery Feed
-![Dashboard](docs/output-screenshots/dashboard.png)
+<img width="1920" height="868" alt="screencapture-park-ease-6sr4-onrender-2026-02-20-12_03_26" src="https://github.com/user-attachments/assets/5153c5c5-c475-43d7-ab49-bdbe047e10b8" />
 
-### Parking Detail — Full Info & Booking Interface
-![Parking Detail](docs/output-screenshots/parking-detail.png)
+### Parking Detail — Full Info,  Booking Interface, Time Selection & Confirmation
+<img width="1920" height="868" alt="screencapture-park-ease-6sr4-onrender-2026-02-20-12_03_26" src="https://github.com/user-attachments/assets/0c2310a0-ec43-44c4-84da-cdb4dff515e6" />
 
-### Booking Flow — Time Selection & Confirmation
-![Booking Flow](docs/output-screenshots/booking-flow.png)
 
 ### My Bookings — Reservation History
-![My Bookings](docs/output-screenshots/my-bookings.png)
 
 ### Profile & Provider Module — Register a Parking Space
-![Profile Provider](docs/output-screenshots/profile-provider.png)
+<img width="1920" height="1162" alt="screencapture-park-ease-6sr4-onrender-profile-2026-02-20-12_09_43" src="https://github.com/user-attachments/assets/e2d860ef-81ad-4453-8c41-4b536072285d" />
 
 ### Database Schema Visual
-![Database Schema](docs/output-screenshots/db-schema-visual.png)
+<img width="1338" height="748" alt="supabase-schema-eqnsmyahfdechczzodla" src="https://github.com/user-attachments/assets/e790b57c-9d9d-4526-a425-c668705afdee" />
 
 ---
 
