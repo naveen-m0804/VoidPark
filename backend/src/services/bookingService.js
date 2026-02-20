@@ -45,9 +45,9 @@ async function createBooking(userId, data) {
     const endTime = data.endTime ? new Date(data.endTime) : null;
 
     // Validate times
-    if (startTime < new Date()) {
-      throw Object.assign(new Error('Start time must be in the future.'), { statusCode: 400 });
-    }
+    // Relaxed validation: start time can be in the past (e.g., booking started "just now").
+    // We only strictly ensure that if endTime exists, it is > startTime.
+
     if (endTime && endTime <= startTime) {
       throw Object.assign(new Error('End time must be after start time.'), { statusCode: 400 });
     }
