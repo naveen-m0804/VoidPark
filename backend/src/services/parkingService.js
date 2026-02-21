@@ -337,16 +337,12 @@ async function updateParkingSpace(parkingId, ownerId, data) {
 // ─────────────────────────────────────────────
 async function deleteParkingSpace(parkingId, ownerId) {
   return withTransaction(async (client) => {
-    // ... same as before but simpler without specific slot checking logic? 
-    // Cascade handles slots. Manual check for active bookings.
-    const activeBookings = await client.query(
-      `SELECT COUNT(*) AS count FROM bookings WHERE parking_id = $1 AND booking_status = 'confirmed'`,
+    // Update active bookings to cancelled before deleting
+    await client.query(
+      `UPDATE bookings SET booking_status = 'cancelled'
+       WHERE parking_id = $1 AND booking_status IN ('pending', 'confirmed')`,
       [parkingId]
     );
-
-    if (parseInt(activeBookings.rows[0].count) > 0) {
-      throw { message: 'Cannot delete parking space with active bookings.', statusCode: 400 };
-    }
 
     await client.query('DELETE FROM parking_spaces WHERE id = $1 AND owner_id = $2', [parkingId, ownerId]);
     return { deleted: true };

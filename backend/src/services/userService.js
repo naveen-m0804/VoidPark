@@ -104,7 +104,11 @@ const UserService = {
       await client.query('DELETE FROM users WHERE id = $1', [id]);
 
       // Delete Firebase account
-      await deleteFirebaseUser(firebaseUid);
+      try {
+        await deleteFirebaseUser(firebaseUid);
+      } catch (firebaseErr) {
+        console.warn('Firebase user deletion failed or already deleted:', firebaseErr.message);
+      }
 
       await client.query('COMMIT');
       return true;
