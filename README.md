@@ -169,6 +169,9 @@ Profile Page (Any Time)
 
 ## Architecture Overview
 
+![voidpark_architecture](https://github.com/user-attachments/assets/c5392938-be91-46bd-929a-16486dac632f)
+
+
 ```
 ┌─────────────────────────────────────────────────┐
 │                   CLIENT (Browser)               │
